@@ -1,61 +1,111 @@
+import { motion } from "motion/react";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+
+  visible: {
+    opacity: 1,
+    y: 0,
+
+    transition: {
+      duration: 1.3,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
 const Hero = () => {
   return (
     <main className="hero">
       <div className="hero-container">
-
-        <div className="hero-content">
+        <motion.div
+          className="hero-content"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="hero-text">
-            <p className="hero-greeting">Hi, I am</p>
+            <motion.p className="hero-greeting" variants={itemVariants}>
+              Hi, I am
+            </motion.p>
 
-            <h1>Ruslan Ragimov</h1>
+            <motion.h1 variants={itemVariants}>Ruslan Ragimov</motion.h1>
 
-            <p className="hero-role">
+            <motion.p className="hero-role" variants={itemVariants}>
               Software Developer
-            </p>
+            </motion.p>
           </div>
 
-          <div className="hero-socials">
-            <a
-              href="mailto:ruslan.raagimov06@gmail.com"
+          <motion.div className="hero-socials" variants={containerVariants}>
+            <motion.a
+              variants={itemVariants}
+              href="mailto:..."
               className="social-button"
-              aria-label="Email"
             >
               <MdAlternateEmail />
-            </a>
+            </motion.a>
 
-            <a
-              href="https://github.com/Kvakq"
+            <motion.a
+              variants={itemVariants}
+              href="..."
               target="_blank"
               rel="noreferrer"
               className="social-button"
-              aria-label="GitHub"
             >
               <FaGithub />
-            </a>
+            </motion.a>
 
-            <a
-              href="https://www.linkedin.com/in/ruslan-ragimov-64971332b/"
+            <motion.a
+              variants={itemVariants}
+              href="..."
               target="_blank"
               rel="noreferrer"
               className="social-button"
-              aria-label="LinkedIn"
             >
               <FaLinkedinIn />
-            </a>
-          </div>
-        </div>
+            </motion.a>
+          </motion.div>
+        </motion.div>
 
-        <div className="hero-image-wrapper">
+        <motion.div
+          className="hero-image-wrapper"
+          initial={{
+            opacity: 0,
+            x: 40,
+            scale: 0.98,
+          }}
+          animate={{
+            opacity: 1,
+            x: 0,
+            scale: 1,
+          }}
+          transition={{
+            duration: 1.5,
+            delay: 0.5,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        >
           <img
             src="/RuslanWork.png"
             alt="Ruslan Ragimov"
             className="hero-image"
           />
-        </div>
-
+        </motion.div>
       </div>
     </main>
   );

@@ -4,7 +4,7 @@
 
 .header {
   width: 100%;
-  background: #D4D4D4;
+  background: #d4d4d4;
   border-bottom: 1px solid #353535;
 }
 
@@ -49,14 +49,13 @@
   font-weight: 600;
 }
 
-
 /* =========================
    HERO
 ========================= */
 
 .hero {
   min-height: calc(100vh - 70px);
-  background: #D4D4D4;
+  background: #d4d4d4;
 }
 
 .hero-container {
@@ -72,7 +71,6 @@
 
   gap: 80px;
 }
-
 
 /* LEFT SIDE */
 
@@ -111,7 +109,6 @@
   color: #2e2e2e;
 }
 
-
 /* SOCIAL ICONS */
 
 .hero-socials {
@@ -123,7 +120,7 @@
   width: 52px;
   height: 52px;
 
-  background: #FFFFFF;
+  background: #ffffff;
 
   display: flex;
   justify-content: center;
@@ -144,7 +141,6 @@
   box-shadow: 0 7px 10px rgba(0, 0, 0, 0.24);
 }
 
-
 /* RIGHT SIDE */
 
 .hero-image-wrapper {
@@ -164,7 +160,6 @@
 
   border-radius: 38px;
 }
-
 
 /* =========================
    RESPONSIVE
@@ -192,7 +187,6 @@
     max-width: 700px;
   }
 }
-
 
 @media (max-width: 700px) {
   .header-container {
