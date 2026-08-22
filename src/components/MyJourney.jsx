@@ -25,7 +25,12 @@ const journeySteps = [
   },
 ];
 
-const JourneyItem = ({ step, index, activeIndex, setActiveIndex }) => {
+const JourneyItem = ({
+  step,
+  index,
+  activeIndex,
+  setActiveIndex,
+}) => {
   const ref = useRef(null);
 
   const isInView = useInView(ref, {
@@ -42,16 +47,47 @@ const JourneyItem = ({ step, index, activeIndex, setActiveIndex }) => {
   return (
     <article
       ref={ref}
-      className={`journey-item ${activeIndex === index ? "active" : ""}`}
+      className={`journey-item ${
+        activeIndex === index ? "active" : ""
+      }`}
     >
-      <span className="journey-year">{step.year}</span>
+      <span className="journey-year">
+        {step.year}
+      </span>
 
       <div className="journey-item-content">
-        <p className="journey-label">{step.label}</p>
+        <p className="journey-label">
+          {step.label}
+        </p>
 
         <h3>{step.title}</h3>
 
         <p>{step.text}</p>
+
+        {/* Display only on tablets/mobile devices */}
+        <motion.img
+          src={step.image}
+          alt={step.title}
+          className="journey-mobile-image"
+          initial={{
+            opacity: 0,
+            y: 30,
+            scale: 0.98,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.25,
+          }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+        />
       </div>
     </article>
   );

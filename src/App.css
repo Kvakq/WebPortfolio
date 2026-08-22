@@ -42,7 +42,6 @@
   color: #ffffff;
 
   padding: 9px 24px;
-
   border-radius: 30px;
 
   font-size: 13px;
@@ -68,7 +67,6 @@
   grid-template-columns: 1fr 1fr;
 
   align-items: center;
-
   gap: 80px;
 }
 
@@ -167,15 +165,17 @@
 
 .journey {
   background: #f5f5f5;
+
   padding: 120px 0 160px;
 }
 
 .journey-container {
   width: min(100% - 140px, 1320px);
+
   margin: 0 auto;
 }
 
-/* HEADER */
+/* JOURNEY HEADER */
 
 .journey-header {
   margin-bottom: 100px;
@@ -196,15 +196,16 @@
 
 .journey-header h2 {
   font-size: clamp(60px, 8vw, 120px);
+
   line-height: 0.9;
+  letter-spacing: -6px;
 
   font-weight: 600;
-  letter-spacing: -6px;
 
   color: #2b2b2b;
 }
 
-/* CONTENT */
+/* JOURNEY CONTENT */
 
 .journey-content {
   display: grid;
@@ -227,12 +228,22 @@
   min-height: 50vh;
 
   display: grid;
+
   grid-template-columns: 90px 1fr;
+
   gap: 30px;
 
   align-items: center;
 
   border-top: 1px solid #c8c8c8;
+
+  opacity: 0.55;
+
+  transition: opacity 0.5s ease;
+}
+
+.journey-item.active {
+  opacity: 1;
 }
 
 .journey-item:last-child {
@@ -268,7 +279,8 @@
   color: #2b2b2b;
 }
 
-.journey-item-content > p:last-child {
+/* Основной текст Journey */
+.journey-item-content > p:not(.journey-label) {
   max-width: 520px;
 
   font-size: 17px;
@@ -277,10 +289,11 @@
   color: #676767;
 }
 
-/* IMAGE */
+/* DESKTOP JOURNEY IMAGE */
 
 .journey-visual {
   position: sticky;
+
   top: 120px;
 }
 
@@ -288,6 +301,7 @@
   position: relative;
 
   width: 100%;
+
   aspect-ratio: 3 / 2;
 
   overflow: hidden;
@@ -299,6 +313,7 @@
 
 .journey-image {
   position: absolute;
+
   inset: 0;
 
   width: 100%;
@@ -318,9 +333,17 @@
   color: #666;
 }
 
+/* MOBILE JOURNEY IMAGE */
+
+.journey-mobile-image {
+  display: none;
+}
+
 /* =========================
    RESPONSIVE
 ========================= */
+
+/* HERO TABLET */
 
 @media (max-width: 1000px) {
   .hero-container {
@@ -333,6 +356,7 @@
 
   .hero-content {
     min-height: auto;
+
     gap: 70px;
   }
 
@@ -344,6 +368,56 @@
     max-width: 700px;
   }
 }
+
+/* JOURNEY TABLET / MOBILE */
+
+@media (max-width: 900px) {
+  .journey-container {
+    width: calc(100% - 60px);
+  }
+
+  .journey-content {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  /*
+  On small screens, remove
+  the desktop sticky image.
+  */
+  .journey-visual {
+    display: none;
+  }
+
+  .journey-item {
+    min-height: auto;
+
+    opacity: 1;
+
+    padding: 70px 0;
+  }
+
+  /*
+  Now each Journey Item
+  gets its own image.
+  */
+  .journey-mobile-image {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 3 / 2;
+
+    margin-top: 35px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+  }
+}
+
+/* HERO MOBILE */
 
 @media (max-width: 700px) {
   .header-container {
@@ -360,6 +434,7 @@
 
   .hero-container {
     width: calc(100% - 32px);
+
     padding: 50px 0;
   }
 
@@ -369,6 +444,7 @@
 
   .hero-text h1 {
     font-size: 48px;
+
     letter-spacing: -2px;
   }
 
@@ -378,5 +454,39 @@
 
   .hero-image {
     border-radius: 25px;
+  }
+}
+
+/* JOURNEY MOBILE */
+
+@media (max-width: 600px) {
+  .journey {
+    padding: 80px 0 100px;
+  }
+
+  .journey-container {
+    width: calc(100% - 32px);
+  }
+
+  .journey-header {
+    margin-bottom: 60px;
+  }
+
+  .journey-header h2 {
+    letter-spacing: -3px;
+  }
+
+  .journey-item {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    padding: 55px 0;
+  }
+
+  .journey-mobile-image {
+    margin-top: 30px;
+
+    border-radius: 20px;
   }
 }
